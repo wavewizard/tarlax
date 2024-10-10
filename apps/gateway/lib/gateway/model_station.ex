@@ -44,6 +44,10 @@ alias Battery
 
   end
 
+  def update(station,  args) do
+
+  end
+
 
 
 end
