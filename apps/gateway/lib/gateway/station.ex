@@ -9,7 +9,7 @@ defmodule Station do
   @impl GenServer
   def init(args) do
     IO.puts("#{inspect(args)}")
-  station = StationModel.make_station(args[:name], args[:id], args[:number_of_ports])
+  station = StationModel.make_station(args[:name], args[:id], args[:number_of_ports], %{})
     {:ok, station }
   end
 
