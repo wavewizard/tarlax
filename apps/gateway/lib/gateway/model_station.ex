@@ -14,14 +14,15 @@ alias Battery
     devices: map()
   }
 
-  def make_station(name, id, number_of_ports, devices) do
+
+  def make_station(name, id, number_of_ports) do
     %StationModel{
       name: name,
       id: id,
       ports: create_ports(number_of_ports),
-      devices: devices,
+      devices: %{},
       battery: Battery.make_battery(50, 100, ~D[2023-01-01]),
-      configuration: %{}
+      configuration: %{},
     }
   end
 
@@ -44,7 +45,18 @@ alias Battery
 
   end
 
-  def update(station,  args) do
+  def add_device(station, device) do
+    devices = Map.put(station.devices, device.id, device)
+
+    %{station | devices: devices}
+  end
+
+
+  def update_device_battery_level(station,  device_id, level) do
+    devices = Map.update!(station.devices, device_id, fn old_device ->
+      %{old_device | battery: Battery.set_battery_level(old_device.battery, level)}
+       end)
+    %{station | devices: devices}
 
   end
 

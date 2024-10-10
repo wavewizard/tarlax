@@ -7,7 +7,7 @@ defmodule Battery do
     %{battery |charge_level: level}
   end
 
-  def make_battery(amper, charge_level, date_of_production) do
+  def make_battery(amper, charge_level, date_of_production \\~D[2024-01-01]) do
     %__MODULE__{amper: amper, charge_level: charge_level, date_of_production: date_of_production}
   end
 
