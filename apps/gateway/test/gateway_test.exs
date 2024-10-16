@@ -35,6 +35,4 @@ defmodule GatewayTest do
 
   end
 
-
-
 end
